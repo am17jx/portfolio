@@ -27,7 +27,7 @@ export const projects: Project[] = [
       'A RESTful API for managing tasks with user authentication, task creation, updating, and deletion. Built to support multi-user task operations and error handling with a modular code structure.',
     outcome: 'Delivered a production-ready multi-user task API with clean modular architecture deployed on Render.',
     techStack: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'REST'],
-    githubUrl: 'https://github.com/ameerahmed0780',
+    githubUrl: 'https://github.com/am17jx',
     liveUrl: 'https://render.com',
     image: '/projects/task-management-api.png',
     featured: true,
@@ -50,7 +50,7 @@ export const projects: Project[] = [
       'A backend API built for a tour booking application featuring advanced filtering, sorting, pagination, authentication, authorization, and data validation following the MVC pattern.',
     outcome: 'Demonstrated scalable backend architecture with advanced query features and role-based authorization.',
     techStack: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'REST'],
-    githubUrl: 'https://github.com/ameerahmed0780',
+    githubUrl: 'https://github.com/am17jx',
     image: '/projects/natours-api.png',
     featured: true,
     problem:
@@ -72,7 +72,7 @@ export const projects: Project[] = [
       'A secure and robust RESTful API for managing books, user accounts, comments, and tags. Features a complete JWT authentication system, role-based access control, and comprehensive CRUD operations with a strong emphasis on security.',
     outcome: 'Built a hardened API with industry-standard security practices including rate limiting, helmet, and XSS protection.',
     techStack: ['Node.js', 'Express.js', 'PostgreSQL', 'JWT', 'bcrypt', 'Express Rate Limit', 'Helmet', 'XSS-Clean'],
-    githubUrl: 'https://github.com/ameerahmed0780',
+    githubUrl: 'https://github.com/am17jx',
     image: '/projects/book-review-api.png',
     featured: true,
     problem:
@@ -158,7 +158,7 @@ export const blogPosts: BlogPost[] = [
       'Security is not an afterthought. In this article I walk through how I layered JWT authentication, bcrypt password hashing, Helmet headers, and Express Rate Limit into a production-grade Book Review API.',
     date: 'Mar 2026',
     readTime: '8 min read',
-    url: 'https://github.com/ameerahmed0780',
+    url: 'https://github.com/am17jx',
     category: 'Backend',
   },
   {
@@ -167,7 +167,7 @@ export const blogPosts: BlogPost[] = [
       'MVC keeps your Node.js code clean and scalable. Here\'s how I applied it to the Natours API — including advanced filtering, sorting, pagination, and role-based authorization.',
     date: 'Feb 2026',
     readTime: '6 min read',
-    url: 'https://github.com/ameerahmed0780',
+    url: 'https://github.com/am17jx',
     category: 'Node.js',
   },
   {
@@ -176,7 +176,7 @@ export const blogPosts: BlogPost[] = [
       'I joined The Chance, a non-profit Android training program. Here\'s what I learned about Kotlin, Clean Architecture, TDD, and Scrum in three months of team-based Android development.',
     date: 'May 2025',
     readTime: '5 min read',
-    url: 'https://github.com/ameerahmed0780',
+    url: 'https://github.com/am17jx',
     category: 'Android',
   },
 ]
