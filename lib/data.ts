@@ -28,7 +28,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/alexchen/devflow',
     liveUrl: 'https://devflow.example.com',
     stars: 1200,
-    image: '/projects/devflow.png',
+    image: '/projects/placeholder.svg',
     featured: true,
     problem: 'Engineering teams at fast-growing startups spend an average of 3 hours per PR waiting for code review. Async reviews lose context and async comments lack thread structure.',
     constraints: 'Had to work within existing GitHub webhook infrastructure. Real-time updates required without polling. Zero-downtime deployments mandatory.',
@@ -40,7 +40,7 @@ export const projects: Project[] = [
                                     │
                            GitHub Webhooks Listener`,
     results: '60% reduction in PR turnaround. 94% user satisfaction score in post-launch survey. Zero downtime over 8 months of production.',
-    screenshots: ['/projects/devflow-1.png', '/projects/devflow-2.png'],
+    screenshots: ['/projects/placeholder.svg', '/projects/placeholder.svg'],
   },
   {
     slug: 'openmetrics',
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     techStack: ['Go', 'React', 'ClickHouse', 'Grafana', 'Docker'],
     githubUrl: 'https://github.com/alexchen/openmetrics',
     stars: 800,
-    image: '/projects/openmetrics.png',
+    image: '/projects/placeholder.svg',
     featured: true,
     problem: 'Observability tools like Datadog cost $50k+/year for mid-size teams. Most features go unused. OpenTelemetry data is vendor-locked once ingested.',
     constraints: 'Must support OpenTelemetry protocol natively. Dashboard must load within 1s even with 10M+ data points. Single-binary deployment for self-hosters.',
@@ -60,7 +60,7 @@ export const projects: Project[] = [
                                               │
                                      Query Engine (Go)`,
     results: '200+ production deployments. Average cost savings of $42k/year vs Datadog. 1.2k GitHub stars in first 3 months.',
-    screenshots: ['/projects/openmetrics-1.png', '/projects/openmetrics-2.png'],
+    screenshots: ['/projects/placeholder.svg', '/projects/placeholder.svg'],
   },
   {
     slug: 'formcraft',
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/alexchen/formcraft',
     liveUrl: 'https://formcraft.example.com',
     stars: 320,
-    image: '/projects/formcraft.png',
+    image: '/projects/placeholder.svg',
     featured: true,
     problem: 'No-code form builders lock data in proprietary formats and charge per-submission fees that become unsustainable at scale.',
     constraints: 'Drag-and-drop must be accessible via keyboard. Submissions must survive Lambda cold starts. Webhooks must retry with exponential backoff.',
@@ -81,7 +81,7 @@ export const projects: Project[] = [
                                               │
                                MongoDB + AWS Lambda Workers`,
     results: '2M+ monthly submissions. 99.9% uptime over 18 months. Webhook delivery rate: 99.97%.',
-    screenshots: ['/projects/formcraft-1.png', '/projects/formcraft-2.png'],
+    screenshots: ['/projects/placeholder.svg', '/projects/placeholder.svg'],
   },
   {
     slug: 'sqlens',
@@ -91,7 +91,7 @@ export const projects: Project[] = [
     techStack: ['TypeScript', 'Python', 'PostgreSQL', 'OpenAI API', 'Vercel'],
     githubUrl: 'https://github.com/alexchen/sqlens',
     liveUrl: 'https://sqlens.example.com',
-    image: '/projects/sqlens.png',
+    image: '/projects/placeholder.svg',
     featured: false,
     problem: 'Database GUIs are desktop-only and clunky. EXPLAIN output is hard to read. Sharing a slow query with a teammate requires screenshots.',
     constraints: 'Must not store raw query results (privacy). AI suggestions must stream. Shareable links must expire after 7 days.',
@@ -101,7 +101,7 @@ export const projects: Project[] = [
                                     │
                              OpenAI API (streaming)`,
     results: '5,000+ registered users. Average time-to-diagnosis reduced from 45 min to 8 min based on user surveys.',
-    screenshots: ['/projects/sqlens-1.png'],
+    screenshots: ['/projects/placeholder.svg'],
   },
 ]
 
