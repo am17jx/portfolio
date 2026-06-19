@@ -1,4 +1,4 @@
-import { GitBranch, Globe, Globe2 } from 'lucide-react'
+import { RiGithubFill, RiLinkedinBoxFill, RiTwitterXFill } from 'react-icons/ri'
 import { personalInfo } from '@/lib/data'
 
 export function Footer() {
@@ -16,7 +16,7 @@ export function Footer() {
             aria-label="GitHub profile"
             className="text-slate-500 hover:text-terminal-green transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
           >
-            <GitBranch size={18} />
+            <RiGithubFill size={18} />
           </a>
           <a
             href={personalInfo.linkedinUrl}
@@ -25,7 +25,7 @@ export function Footer() {
             aria-label="LinkedIn profile"
             className="text-slate-500 hover:text-terminal-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
           >
-            <Globe size={18} />
+            <RiLinkedinBoxFill size={18} />
           </a>
           <a
             href={personalInfo.twitterUrl}
@@ -34,7 +34,7 @@ export function Footer() {
             aria-label="Twitter profile"
             className="text-slate-500 hover:text-terminal-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
           >
-            <Globe2 size={18} />
+            <RiTwitterXFill size={18} />
           </a>
         </div>
       </div>
