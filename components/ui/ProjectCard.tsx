@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { ExternalLink, BookOpen, Star } from 'lucide-react'
+import { Star } from 'lucide-react'
 import { RiGithubFill } from 'react-icons/ri'
 import { Project } from '@/lib/types'
 
@@ -83,25 +82,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <RiGithubFill size={15} />
             Code
           </a>
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${project.title} live demo`}
-              className="flex items-center gap-1.5 text-sm hover:text-terminal-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
-            >
-              <ExternalLink size={15} />
-              Live
-            </a>
-          )}
-          <Link
-            href={`/projects/${project.slug}`}
-            className="flex items-center gap-1.5 text-sm hover:text-terminal-cyan transition-colors ml-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
-          >
-            <BookOpen size={15} />
-            Case Study
-          </Link>
         </div>
       </div>
     </article>
