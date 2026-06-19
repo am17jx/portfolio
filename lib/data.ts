@@ -8,7 +8,7 @@ export const personalInfo: PersonalInfo = {
   githubUrl: 'https://github.com/am17jx',
   linkedinUrl: 'https://www.linkedin.com/in/ameer-ahmed-4ba9972b1',
   twitterUrl: 'https://twitter.com/ameerahmed0780',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/portfolio/resume.pdf',
   bio: 'Full-Stack Engineer (Node.js + React) and Information & Communication Engineering graduate, building scalable web applications from Baghdad, Iraq.',
   summary:
     'Full-Stack Software Engineer graduating in 2026 from Information & Communication Engineering at Al-Nahrain University. Specializing in backend development with Node.js and Express.js, and building modern frontends with React and Next.js. Experienced in REST API design, authentication systems, PostgreSQL & MongoDB, with a strong emphasis on clean architecture and security.',
@@ -29,7 +29,7 @@ export const projects: Project[] = [
     techStack: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'REST'],
     githubUrl: 'https://github.com/am17jx',
     liveUrl: 'https://render.com',
-    image: '/projects/task-management-api.png',
+    image: '/portfolio/projects/task-management-api.png',
     featured: true,
     problem:
       'Teams and individuals needed a reliable backend service for managing tasks across multiple users with proper authentication and clean separation of concerns.',
@@ -41,7 +41,7 @@ export const projects: Project[] = [
                                     │
                           Mongoose Models (MongoDB)`,
     results: 'Clean multi-user REST API with authentication, full CRUD, and hosted on Render.',
-    screenshots: ['/projects/task-management-api.png'],
+    screenshots: ['/portfolio/projects/task-management-api.png'],
   },
   {
     slug: 'natours-api',
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     outcome: 'Demonstrated scalable backend architecture with advanced query features and role-based authorization.',
     techStack: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'REST'],
     githubUrl: 'https://github.com/am17jx',
-    image: '/projects/natours-api.png',
+    image: '/portfolio/projects/natours-api.png',
     featured: true,
     problem:
       'Tour booking platforms require complex filtering, sorting, and pagination logic alongside secure multi-role authorization.',
@@ -63,7 +63,7 @@ export const projects: Project[] = [
                                     │
                           Mongoose Models (MongoDB)`,
     results: 'Fully functional tour booking API with advanced query engine, authentication, and role-based access control.',
-    screenshots: ['/projects/natours-api.png'],
+    screenshots: ['/portfolio/projects/natours-api.png'],
   },
   {
     slug: 'book-review-api',
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     outcome: 'Built a hardened API with industry-standard security practices including rate limiting, helmet, and XSS protection.',
     techStack: ['Node.js', 'Express.js', 'PostgreSQL', 'JWT', 'bcrypt', 'Express Rate Limit', 'Helmet', 'XSS-Clean'],
     githubUrl: 'https://github.com/am17jx',
-    image: '/projects/book-review-api.png',
+    image: '/portfolio/projects/book-review-api.png',
     featured: true,
     problem:
       'Book review platforms handle sensitive user data and need strong security measures: input sanitization, rate limiting, encrypted passwords, and role-based access.',
@@ -87,7 +87,7 @@ export const projects: Project[] = [
                                     │
                           PostgreSQL (Relational DB)`,
     results: 'Production-grade secure API with comprehensive authentication, RBAC, and multiple layers of security hardening.',
-    screenshots: ['/projects/book-review-api.png'],
+    screenshots: ['/portfolio/projects/book-review-api.png'],
   },
 ]
 
