@@ -3,11 +3,14 @@
 import { useState, useEffect } from 'react'
 
 const lines = [
-  '$ git clone https://github.com/alexchen/devflow',
-  '$ cd devflow && npm install',
-  '$ npm run dev',
-  '  ▲ Next.js 14.0.0',
-  '  ✓ Ready on http://localhost:3000',
+  '$ whoami',
+  '  ameer-ahmed — full-stack engineer',
+  '$ ls skills/',
+  '  node.js  express  react  next.js  postgresql  mongodb',
+  '$ npm run build:dream-project',
+  '  ✓ compiling ideas...',
+  '  ✓ deploying to production',
+  '  ✓ ready — let\'s build something great',
 ]
 
 export function TerminalDecoration() {

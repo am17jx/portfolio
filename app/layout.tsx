@@ -22,13 +22,16 @@ export const metadata: Metadata = {
     template: `%s | ${personalInfo.name}`,
   },
   description:
-    'Full-stack developer portfolio — Claude Code portfolio, open source contributor, tech writer.',
+    'Full-Stack Engineer (Node.js + React) graduating 2026 from Al-Nahrain University. Building scalable web apps and REST APIs from Baghdad, Iraq.',
   keywords: [
-    'developer portfolio',
-    'Claude Code portfolio',
-    'full-stack developer portfolio',
-    'TypeScript developer',
+    'Ameer Ahmed',
+    'full-stack developer',
+    'Node.js developer',
     'React developer',
+    'REST API developer',
+    'software developer Baghdad',
+    'Express.js',
+    'PostgreSQL',
   ],
   openGraph: {
     type: 'website',

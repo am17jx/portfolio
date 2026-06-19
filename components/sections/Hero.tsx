@@ -7,7 +7,7 @@ import { RiGithubFill, RiLinkedinBoxFill, RiTwitterXFill } from 'react-icons/ri'
 import { TerminalDecoration } from '@/components/ui/TerminalDecoration'
 import { personalInfo } from '@/lib/data'
 
-const roles = ['Full-Stack Developer', 'Open Source Contributor', 'Tech Writer']
+const roles = ['Full-Stack Developer', 'Node.js Engineer', 'React Developer', 'API Builder']
 
 function useTypingEffect(strings: string[]) {
   const [displayed, setDisplayed] = useState('')
@@ -65,7 +65,7 @@ export function Hero() {
             transition={{ duration: 0.6 }}
           >
             <p className="font-mono text-terminal-green text-sm mb-4 tracking-widest uppercase">
-              Available for work
+              Open to opportunities
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-100 mb-4">
               Hi, I&apos;m{' '}

@@ -1,107 +1,93 @@
 import { Project, Skill, Experience, BlogPost, PersonalInfo } from './types'
 
 export const personalInfo: PersonalInfo = {
-  name: 'Alex Chen',
-  email: 'alex@example.com',
-  company: 'Stripe',
-  githubUsername: 'alexchen',
-  githubUrl: 'https://github.com/alexchen',
-  linkedinUrl: 'https://linkedin.com/in/alexchen',
-  twitterUrl: 'https://twitter.com/alexchen',
+  name: 'Ameer Ahmed',
+  email: 'ameerahmed0780@gmail.com',
+  company: 'New Core Company',
+  githubUsername: 'am17jx',
+  githubUrl: 'https://github.com/am17jx',
+  linkedinUrl: 'https://www.linkedin.com/in/ameer-ahmed-4ba9972b1',
+  twitterUrl: 'https://twitter.com/ameerahmed0780',
   resumeUrl: '/resume.pdf',
-  bio: "I build fast, accessible, and scalable web applications — from pixel-perfect UIs to distributed backend systems.",
-  summary: "Full-stack engineer with 6 years of experience shipping production software at scale. I specialize in TypeScript, React, and Node.js, and I care deeply about developer experience, performance, and open source.",
-  currentRole: 'Senior Software Engineer',
-  funFact: 'I once optimized a PostgreSQL query from 14 seconds to 80ms by adding a single index.',
-  yearsExperience: 6,
-  projectsShipped: 40,
-  githubStars: 2300,
+  bio: 'Full-Stack Engineer (Node.js + React) and Information & Communication Engineering graduate, building scalable web applications from Baghdad, Iraq.',
+  summary:
+    'Full-Stack Software Engineer graduating in 2026 from Information & Communication Engineering at Al-Nahrain University. Specializing in backend development with Node.js and Express.js, and building modern frontends with React and Next.js. Experienced in REST API design, authentication systems, PostgreSQL & MongoDB, with a strong emphasis on clean architecture and security.',
+  currentRole: 'Software Developer',
+  funFact: 'I once built a fully authenticated REST API with rate-limiting, role-based access control, and XSS protection — all in a single weekend for a personal project.',
+  yearsExperience: 1,
+  projectsShipped: 10,
+  githubStars: 0,
 }
 
 export const projects: Project[] = [
   {
-    slug: 'devflow',
-    title: 'DevFlow',
-    description: 'A real-time collaborative code review platform with inline comments, diff views, and CI status integration.',
-    outcome: 'Reduced code review turnaround time by 60% for a 50-person engineering team.',
-    techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'WebSockets', 'Redis'],
-    githubUrl: 'https://github.com/alexchen/devflow',
-    liveUrl: 'https://devflow.example.com',
-    stars: 1200,
-    image: '/projects/placeholder.svg',
+    slug: 'task-management-api',
+    title: 'Task Management API',
+    description:
+      'A RESTful API for managing tasks with user authentication, task creation, updating, and deletion. Built to support multi-user task operations and error handling with a modular code structure.',
+    outcome: 'Delivered a production-ready multi-user task API with clean modular architecture deployed on Render.',
+    techStack: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'REST'],
+    githubUrl: 'https://github.com/ameerahmed0780',
+    liveUrl: 'https://render.com',
+    image: '/projects/task-management-api.png',
     featured: true,
-    problem: 'Engineering teams at fast-growing startups spend an average of 3 hours per PR waiting for code review. Async reviews lose context and async comments lack thread structure.',
-    constraints: 'Had to work within existing GitHub webhook infrastructure. Real-time updates required without polling. Zero-downtime deployments mandatory.',
-    architecture: `Client (Next.js) ─► API Routes ─► WebSocket Server
+    problem:
+      'Teams and individuals needed a reliable backend service for managing tasks across multiple users with proper authentication and clean separation of concerns.',
+    constraints:
+      'Must support JWT-based auth. Data must be persisted reliably with Mongoose. Code structure must be modular and maintainable. Deployed via Render.',
+    architecture: `Client ─► Express Router ─► Auth Middleware (JWT)
                                     │
-                             PostgreSQL (pgvector)
+                             Controller Layer
                                     │
-                              Redis Pub/Sub
-                                    │
-                           GitHub Webhooks Listener`,
-    results: '60% reduction in PR turnaround. 94% user satisfaction score in post-launch survey. Zero downtime over 8 months of production.',
-    screenshots: ['/projects/placeholder.svg', '/projects/placeholder.svg'],
+                          Mongoose Models (MongoDB)`,
+    results: 'Clean multi-user REST API with authentication, full CRUD, and hosted on Render.',
+    screenshots: ['/projects/task-management-api.png'],
   },
   {
-    slug: 'openmetrics',
-    title: 'OpenMetrics',
-    description: 'An open-source observability dashboard that aggregates logs, metrics, and traces from any OpenTelemetry-compatible source.',
-    outcome: 'Used by 200+ teams to replace Datadog at 1/10th the cost.',
-    techStack: ['Go', 'React', 'ClickHouse', 'Grafana', 'Docker'],
-    githubUrl: 'https://github.com/alexchen/openmetrics',
-    stars: 800,
-    image: '/projects/placeholder.svg',
+    slug: 'natours-api',
+    title: 'Natours API',
+    description:
+      'A backend API built for a tour booking application featuring advanced filtering, sorting, pagination, authentication, authorization, and data validation following the MVC pattern.',
+    outcome: 'Demonstrated scalable backend architecture with advanced query features and role-based authorization.',
+    techStack: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'REST'],
+    githubUrl: 'https://github.com/ameerahmed0780',
+    image: '/projects/natours-api.png',
     featured: true,
-    problem: 'Observability tools like Datadog cost $50k+/year for mid-size teams. Most features go unused. OpenTelemetry data is vendor-locked once ingested.',
-    constraints: 'Must support OpenTelemetry protocol natively. Dashboard must load within 1s even with 10M+ data points. Single-binary deployment for self-hosters.',
-    architecture: `OTel Collector ─► Go Ingest Service ─► ClickHouse
-                                              │
-                                      React Dashboard
-                                              │
-                                     Query Engine (Go)`,
-    results: '200+ production deployments. Average cost savings of $42k/year vs Datadog. 1.2k GitHub stars in first 3 months.',
-    screenshots: ['/projects/placeholder.svg', '/projects/placeholder.svg'],
+    problem:
+      'Tour booking platforms require complex filtering, sorting, and pagination logic alongside secure multi-role authorization.',
+    constraints:
+      'Must implement MVC architecture. Advanced query features (filter, sort, paginate) required. Auth must distinguish between user, guide, and admin roles.',
+    architecture: `Client ─► Express Router ─► Auth & Role Middleware
+                                    │
+                             MVC Controllers
+                                    │
+                          Mongoose Models (MongoDB)`,
+    results: 'Fully functional tour booking API with advanced query engine, authentication, and role-based access control.',
+    screenshots: ['/projects/natours-api.png'],
   },
   {
-    slug: 'formcraft',
-    title: 'FormCraft',
-    description: 'A drag-and-drop form builder with conditional logic, multi-step flows, and webhook integrations.',
-    outcome: 'Processes 2M+ form submissions per month with 99.9% uptime.',
-    techStack: ['React', 'Node.js', 'MongoDB', 'AWS Lambda', 'Stripe'],
-    githubUrl: 'https://github.com/alexchen/formcraft',
-    liveUrl: 'https://formcraft.example.com',
-    stars: 320,
-    image: '/projects/placeholder.svg',
+    slug: 'book-review-api',
+    title: 'Book Review API',
+    description:
+      'A secure and robust RESTful API for managing books, user accounts, comments, and tags. Features a complete JWT authentication system, role-based access control, and comprehensive CRUD operations with a strong emphasis on security.',
+    outcome: 'Built a hardened API with industry-standard security practices including rate limiting, helmet, and XSS protection.',
+    techStack: ['Node.js', 'Express.js', 'PostgreSQL', 'JWT', 'bcrypt', 'Express Rate Limit', 'Helmet', 'XSS-Clean'],
+    githubUrl: 'https://github.com/ameerahmed0780',
+    image: '/projects/book-review-api.png',
     featured: true,
-    problem: 'No-code form builders lock data in proprietary formats and charge per-submission fees that become unsustainable at scale.',
-    constraints: 'Drag-and-drop must be accessible via keyboard. Submissions must survive Lambda cold starts. Webhooks must retry with exponential backoff.',
-    architecture: `React DnD Builder ─► Form Schema (JSON)
-                                              │
-                                   Node.js Submission API
-                                              │
-                               MongoDB + AWS Lambda Workers`,
-    results: '2M+ monthly submissions. 99.9% uptime over 18 months. Webhook delivery rate: 99.97%.',
-    screenshots: ['/projects/placeholder.svg', '/projects/placeholder.svg'],
-  },
-  {
-    slug: 'sqlens',
-    title: 'SQLens',
-    description: 'A browser-based SQL query editor with AI-powered query suggestions, visual explain plans, and one-click sharing.',
-    outcome: 'Helped 5,000+ developers diagnose slow queries without leaving the browser.',
-    techStack: ['TypeScript', 'Python', 'PostgreSQL', 'OpenAI API', 'Vercel'],
-    githubUrl: 'https://github.com/alexchen/sqlens',
-    liveUrl: 'https://sqlens.example.com',
-    image: '/projects/placeholder.svg',
-    featured: false,
-    problem: 'Database GUIs are desktop-only and clunky. EXPLAIN output is hard to read. Sharing a slow query with a teammate requires screenshots.',
-    constraints: 'Must not store raw query results (privacy). AI suggestions must stream. Shareable links must expire after 7 days.',
-    architecture: `Browser ─► Next.js API ─► Python Query Analyzer
+    problem:
+      'Book review platforms handle sensitive user data and need strong security measures: input sanitization, rate limiting, encrypted passwords, and role-based access.',
+    constraints:
+      'Must use PostgreSQL with proper relational schema. Security headers via Helmet. Rate limiting to prevent abuse. Passwords hashed with bcrypt. XSS inputs sanitized.',
+    architecture: `Client ─► Express Router ─► Rate Limiter & Helmet
                                     │
-                             PostgreSQL (target DB via connection string)
+                        Auth Middleware (JWT + bcrypt)
                                     │
-                             OpenAI API (streaming)`,
-    results: '5,000+ registered users. Average time-to-diagnosis reduced from 45 min to 8 min based on user surveys.',
-    screenshots: ['/projects/placeholder.svg'],
+                          Controllers (CRUD)
+                                    │
+                          PostgreSQL (Relational DB)`,
+    results: 'Production-grade secure API with comprehensive authentication, RBAC, and multiple layers of security hardening.',
+    screenshots: ['/projects/book-review-api.png'],
   },
 ]
 
@@ -109,76 +95,89 @@ export const skills: Skill[] = [
   { name: 'JavaScript', icon: 'devicon-javascript-plain colored', category: 'languages' },
   { name: 'TypeScript', icon: 'devicon-typescript-plain colored', category: 'languages' },
   { name: 'Python', icon: 'devicon-python-plain colored', category: 'languages' },
-  { name: 'Go', icon: 'devicon-go-plain colored', category: 'languages' },
+  { name: 'C#', icon: 'devicon-csharp-plain colored', category: 'languages' },
   { name: 'SQL', icon: 'devicon-postgresql-plain colored', category: 'languages' },
-  { name: 'React', icon: 'devicon-react-original colored', category: 'frontend' },
-  { name: 'Next.js', icon: 'devicon-nextjs-plain', category: 'frontend' },
-  { name: 'Vue', icon: 'devicon-vuejs-plain colored', category: 'frontend' },
-  { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-plain colored', category: 'frontend' },
   { name: 'Node.js', icon: 'devicon-nodejs-plain colored', category: 'backend' },
-  { name: 'Express', icon: 'devicon-express-original', category: 'backend' },
+  { name: 'Express.js', icon: 'devicon-express-original', category: 'backend' },
   { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored', category: 'backend' },
   { name: 'MongoDB', icon: 'devicon-mongodb-plain colored', category: 'backend' },
-  { name: 'Redis', icon: 'devicon-redis-plain colored', category: 'backend' },
-  { name: 'GraphQL', icon: 'devicon-graphql-plain colored', category: 'backend' },
-  { name: 'Docker', icon: 'devicon-docker-plain colored', category: 'devops' },
-  { name: 'Kubernetes', icon: 'devicon-kubernetes-plain colored', category: 'devops' },
-  { name: 'AWS', icon: 'devicon-amazonwebservices-plain colored', category: 'devops' },
-  { name: 'Vercel', icon: 'devicon-vercel-plain', category: 'devops' },
-  { name: 'GitHub Actions', icon: 'devicon-github-original', category: 'devops' },
+  { name: 'Mongoose', icon: 'devicon-mongodb-plain colored', category: 'backend' },
+  { name: 'Sequelize', icon: 'devicon-sequelize-plain colored', category: 'backend' },
+  { name: 'React', icon: 'devicon-react-original colored', category: 'frontend' },
+  { name: 'Next.js', icon: 'devicon-nextjs-plain', category: 'frontend' },
+  { name: 'HTML & CSS', icon: 'devicon-html5-plain colored', category: 'frontend' },
+  { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-plain colored', category: 'frontend' },
+  { name: 'Git & GitHub', icon: 'devicon-github-original', category: 'devops' },
+  { name: 'Linux', icon: 'devicon-linux-plain', category: 'devops' },
+  { name: 'Postman', icon: 'devicon-postman-plain colored', category: 'devops' },
+  { name: 'Keycloak', icon: 'devicon-ssh-original', category: 'devops' },
 ]
 
 export const experiences: Experience[] = [
   {
-    company: 'Stripe',
-    role: 'Senior Software Engineer',
-    startDate: 'Mar 2023',
+    company: 'New Core Company',
+    role: 'Software Developer',
+    startDate: 'Jul 2025',
     endDate: 'Present',
-    description: 'Building developer-facing APIs and dashboards for Stripe\'s payment infrastructure. Led the redesign of the Radar fraud rules editor, reducing false positives by 18%.',
-    technologies: ['Ruby', 'TypeScript', 'React', 'PostgreSQL', 'Kafka'],
+    description:
+      'Developing websites for internal use and client projects. Building enterprise software solutions and contributing to the company\'s growth through specialized training programs. Tech stack includes Node.js, Express.js, PostgreSQL, Next.js, and Keycloak.',
+    technologies: ['Node.js', 'Express.js', 'PostgreSQL', 'Next.js', 'Keycloak', 'SQL'],
   },
   {
-    company: 'Vercel',
-    role: 'Software Engineer',
-    startDate: 'Jan 2021',
-    endDate: 'Feb 2023',
-    description: 'Worked on the Next.js core team and Vercel deployment pipeline. Shipped the Image Optimization service v2 and contributed to the App Router RFC.',
-    technologies: ['TypeScript', 'Next.js', 'Rust', 'Go', 'AWS'],
+    company: 'Asiacell',
+    role: 'Summer Internship Trainee',
+    startDate: 'Aug 2025',
+    endDate: 'Sep 2025',
+    description:
+      'Participated in a summer training program focused on service desk fundamentals, VoIP, RF & GSM basics, telecom generations, and an introduction to SCM. Also received professional development training in CV writing and interview preparation.',
+    technologies: ['VoIP', 'RF & GSM', 'Telecom', 'SCM'],
   },
   {
-    company: 'Shopify',
-    role: 'Junior Software Engineer',
-    startDate: 'Jun 2019',
-    endDate: 'Dec 2020',
-    description: 'Built merchant-facing features for the Shopify admin panel. Owned the CSV import/export pipeline handling 50M+ rows daily.',
-    technologies: ['Ruby on Rails', 'React', 'MySQL', 'Elasticsearch'],
+    company: 'UPGRADE Initiative',
+    role: 'Professional Development Trainee',
+    startDate: 'Jul 2025',
+    endDate: 'Sep 2025',
+    description:
+      'Completed the UPGRADE™ initiative — a structured program developing essential professional skills including communication, emotional intelligence, leadership, and proficiency with modern tools and technologies.',
+    technologies: ['Communication', 'Leadership', 'Emotional Intelligence', 'Professional Tools'],
+  },
+  {
+    company: 'Mora',
+    role: 'Content Researcher',
+    startDate: 'Jan 2023',
+    endDate: 'Dec 2024',
+    description: 'Conducted content research and developed material for the organization across various topics.',
+    technologies: ['Content Research', 'Writing', 'Strategy'],
   },
 ]
 
 export const blogPosts: BlogPost[] = [
   {
-    title: 'Why I Stopped Using useEffect for Data Fetching',
-    excerpt: 'useEffect is a footgun for async data. Here\'s what I use instead in Next.js App Router, and why it makes my components dramatically simpler.',
-    date: 'May 12, 2026',
-    readTime: '6 min read',
-    url: 'https://dev.to/alexchen/why-i-stopped-using-useeffect',
-    category: 'React',
-  },
-  {
-    title: 'ClickHouse vs PostgreSQL for Time-Series Data at Scale',
-    excerpt: 'After migrating 800GB of metrics data from Postgres to ClickHouse, here\'s what I learned about column stores, materialized views, and query performance.',
-    date: 'Apr 3, 2026',
-    readTime: '10 min read',
-    url: 'https://dev.to/alexchen/clickhouse-vs-postgres',
-    category: 'Database',
-  },
-  {
-    title: 'The Hidden Cost of Third-Party Scripts',
-    excerpt: 'A single analytics tag cost us 1.2 seconds of LCP on mobile. Here\'s the audit process that found it and the mitigation strategies that actually work.',
-    date: 'Feb 18, 2026',
+    title: 'Building Secure REST APIs: JWT, bcrypt & Rate Limiting in Node.js',
+    excerpt:
+      'Security is not an afterthought. In this article I walk through how I layered JWT authentication, bcrypt password hashing, Helmet headers, and Express Rate Limit into a production-grade Book Review API.',
+    date: 'Mar 2026',
     readTime: '8 min read',
-    url: 'https://dev.to/alexchen/hidden-cost-third-party-scripts',
-    category: 'Performance',
+    url: 'https://github.com/ameerahmed0780',
+    category: 'Backend',
+  },
+  {
+    title: 'MVC Pattern in Express.js: A Practical Tour Booking API',
+    excerpt:
+      'MVC keeps your Node.js code clean and scalable. Here\'s how I applied it to the Natours API — including advanced filtering, sorting, pagination, and role-based authorization.',
+    date: 'Feb 2026',
+    readTime: '6 min read',
+    url: 'https://github.com/ameerahmed0780',
+    category: 'Node.js',
+  },
+  {
+    title: 'From Kotlin Basics to Jetpack Compose: My Android Dev Journey',
+    excerpt:
+      'I joined The Chance, a non-profit Android training program. Here\'s what I learned about Kotlin, Clean Architecture, TDD, and Scrum in three months of team-based Android development.',
+    date: 'May 2025',
+    readTime: '5 min read',
+    url: 'https://github.com/ameerahmed0780',
+    category: 'Android',
   },
 ]
 

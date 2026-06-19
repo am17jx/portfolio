@@ -1,43 +1,81 @@
-import { GitPullRequest } from 'lucide-react'
+'use client'
+
+import { Award, Heart } from 'lucide-react'
 import { RiGithubFill } from 'react-icons/ri'
 import { personalInfo } from '@/lib/data'
 
-const contributions = [
+const certificates = [
   {
-    repo: 'vercel/next.js',
-    description: 'Fixed image optimization memory leak in App Router (#58432)',
-    url: 'https://github.com/vercel/next.js/pull/58432',
+    title: 'Node.js, Express, MongoDB & More: The Complete Bootcamp',
+    issuer: 'Udemy',
+    category: 'Backend',
   },
   {
-    repo: 'tailwindlabs/tailwindcss',
-    description: 'Added `text-wrap: balance` utility (#10545)',
-    url: 'https://github.com/tailwindlabs/tailwindcss/pull/10545',
+    title: 'Postman API Fundamentals Student Expert',
+    issuer: 'Postman',
+    category: 'APIs',
   },
   {
-    repo: 'prisma/prisma',
-    description: 'Improved TypeScript types for nested `include` queries (#19812)',
-    url: 'https://github.com/prisma/prisma/pull/19812',
+    title: 'Getting Started with Git and GitHub',
+    issuer: 'IBM / Coursera',
+    category: 'DevOps',
   },
   {
-    repo: 'openai/openai-node',
-    description: 'Added streaming helper types for chat completions (#477)',
-    url: 'https://github.com/openai/openai-node/pull/477',
+    title: 'Hands-on Introduction to Linux Commands and Shell Scripting',
+    issuer: 'IBM',
+    category: 'Linux',
   },
+  {
+    title: 'Python for Data Science, AI & Development',
+    issuer: 'IBM',
+    category: 'Python',
+  },
+  {
+    title: 'Introduction to Cybersecurity',
+    issuer: 'CISCO',
+    category: 'Security',
+  },
+  {
+    title: 'Programming with JavaScript',
+    issuer: 'University of Michigan',
+    category: 'JavaScript',
+  },
+  {
+    title: 'Introduction to Software Engineering',
+    issuer: 'University of Michigan',
+    category: 'Engineering',
+  },
+  {
+    title: 'Introduction to HTML5',
+    issuer: 'IBM',
+    category: 'Frontend',
+  },
+  {
+    title: 'IoT Hackathon Project',
+    issuer: 'Al-Nahrain University',
+    category: 'IoT',
+  },
+]
+
+const volunteering = [
+  'Volunteer at TEDx Event',
+  'Volunteer at Baghdad International Book Fair',
+  'Participant in the Parliamentary Development Institute with the House of Representatives',
+  'Volunteer in the University Podcast (Laama)',
 ]
 
 export function OpenSource() {
   return (
     <section id="open-source" className="py-24 bg-bg-secondary/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* GitHub contribution graph */}
         <p className="font-mono text-terminal-green text-sm mb-2 tracking-widest uppercase">
-          Open Source
+          GitHub
         </p>
         <h2 className="text-3xl font-bold text-slate-100 mb-8">
-          Community contributions
+          Contribution graph
         </h2>
-
-        {/* GitHub contribution graph */}
-        <div className="mb-10 p-4 bg-bg-secondary border border-border-subtle rounded-xl overflow-x-auto">
+        <div className="mb-16 p-4 bg-bg-secondary border border-border-subtle rounded-xl overflow-x-auto">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`https://ghchart.rshah.org/00ff88/${personalInfo.githubUsername}`}
@@ -46,30 +84,48 @@ export function OpenSource() {
           />
         </div>
 
-        {/* Notable contributions */}
-        <h3 className="font-mono text-terminal-cyan text-xs uppercase tracking-widest mb-4">
-          Notable Contributions
-        </h3>
-        <ul className="space-y-3 mb-8">
-          {contributions.map((c) => (
-            <li key={c.url}>
-              <a
-                href={c.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-3 p-4 bg-bg-secondary border border-border-subtle rounded-lg hover:border-terminal-green/50 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan"
-              >
-                <GitPullRequest
-                  size={16}
-                  className="text-terminal-green mt-0.5 shrink-0"
-                />
-                <div>
-                  <span className="font-mono text-sm text-terminal-cyan group-hover:text-terminal-green transition-colors">
-                    {c.repo}
+        {/* Certificates */}
+        <p className="font-mono text-terminal-green text-sm mb-2 tracking-widest uppercase">
+          Credentials
+        </p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-8">
+          Certificates &amp; Courses
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-16">
+          {certificates.map((cert) => (
+            <div
+              key={cert.title}
+              className="flex items-start gap-3 p-4 bg-bg-secondary border border-border-subtle rounded-lg hover:border-terminal-green/50 transition-colors"
+            >
+              <Award size={16} className="text-terminal-green mt-0.5 shrink-0" />
+              <div>
+                <p className="text-sm text-slate-200 font-medium leading-snug">{cert.title}</p>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-xs text-slate-500">{cert.issuer}</span>
+                  <span className="px-1.5 py-0.5 bg-terminal-green/10 text-terminal-green text-xs font-mono rounded">
+                    {cert.category}
                   </span>
-                  <p className="text-sm text-slate-400 mt-0.5">{c.description}</p>
                 </div>
-              </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Volunteering */}
+        <p className="font-mono text-terminal-green text-sm mb-2 tracking-widest uppercase">
+          Community
+        </p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-6">
+          Volunteering
+        </h2>
+        <ul className="space-y-3 mb-10">
+          {volunteering.map((v) => (
+            <li
+              key={v}
+              className="flex items-center gap-3 p-4 bg-bg-secondary border border-border-subtle rounded-lg"
+            >
+              <Heart size={15} className="text-terminal-green shrink-0" />
+              <span className="text-sm text-slate-300">{v}</span>
             </li>
           ))}
         </ul>

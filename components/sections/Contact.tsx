@@ -1,36 +1,31 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Mail, Send, CheckCircle } from 'lucide-react'
 import { personalInfo } from '@/lib/data'
 
-type Status = 'idle' | 'sending' | 'success' | 'error'
-
 export function Contact() {
-  const [status, setStatus] = useState<Status>('idle')
+  const [submitted, setSubmitted] = useState(false)
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setStatus('sending')
 
     const form = e.currentTarget
-    const data = new FormData(form)
+    const name    = (form.elements.namedItem('name')    as HTMLInputElement).value.trim()
+    const email   = (form.elements.namedItem('email')   as HTMLInputElement).value.trim()
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim()
 
-    try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
-      })
-      if (res.ok) {
-        setStatus('success')
-        form.reset()
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
-    }
+    const subject = encodeURIComponent(`Portfolio Contact from ${name}`)
+    const body    = encodeURIComponent(
+      `Hi Ameer,\n\nMy name is ${name} and my email is ${email}.\n\n${message}\n\nBest regards,\n${name}`
+    )
+
+    // Opens Gmail compose in a new tab pre-filled with the message
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${personalInfo.email}&su=${subject}&body=${body}`
+    window.open(gmailUrl, '_blank')
+
+    setSubmitted(true)
+    form.reset()
   }
 
   return (
@@ -40,14 +35,14 @@ export function Contact() {
           Contact
         </p>
         <h2 className="text-3xl font-bold text-slate-100 mb-4">
-          Interested in working together?
+          Let&apos;s build something together
         </h2>
         <p className="text-slate-400 mb-6">
-          Whether it&apos;s a freelance project, a full-time role, or a
-          consulting engagement — I&apos;d love to hear about it.
+          Whether it&apos;s a backend project, an internship opportunity, or just a conversation about tech
+          — I&apos;d love to hear from you.
         </p>
 
-        {/* Email link */}
+        {/* Direct email link */}
         <a
           href={`mailto:${personalInfo.email}`}
           className="inline-flex items-center gap-2 text-xl font-mono text-terminal-green hover:text-terminal-cyan transition-colors mb-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
@@ -64,25 +59,32 @@ export function Contact() {
         </div>
 
         {/* Form */}
-        {status === 'success' ? (
-          <div role="status" aria-live="polite" className="flex flex-col items-center gap-3 py-10 border border-terminal-green/30 bg-terminal-green/5 rounded-xl">
+        {submitted ? (
+          <div
+            role="status"
+            aria-live="polite"
+            className="flex flex-col items-center gap-3 py-10 border border-terminal-green/30 bg-terminal-green/5 rounded-xl"
+          >
             <CheckCircle size={32} className="text-terminal-green" />
-            <p className="text-slate-200 font-medium">Message sent!</p>
+            <p className="text-slate-200 font-medium">Gmail opened with your message!</p>
             <p className="text-slate-400 text-sm">
-              I&apos;ll get back to you within 24–48 hours.
+              Just hit Send inside Gmail and I&apos;ll get back to you within 24–48 hours.
             </p>
+            <button
+              onClick={() => setSubmitted(false)}
+              className="mt-2 text-sm text-terminal-green hover:text-terminal-cyan transition-colors font-mono"
+            >
+              Send another message
+            </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} aria-busy={status === 'sending'} className="flex flex-col gap-4 text-left">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
             <div>
-              <label
-                htmlFor="name"
-                className="block text-sm text-slate-400 mb-1.5 font-mono"
-              >
+              <label htmlFor="contact-name" className="block text-sm text-slate-400 mb-1.5 font-mono">
                 Name
               </label>
               <input
-                id="name"
+                id="contact-name"
                 name="name"
                 type="text"
                 required
@@ -90,15 +92,13 @@ export function Contact() {
                 className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-lg text-slate-200 placeholder-slate-600 focus:outline-none focus:border-terminal-green focus:ring-1 focus:ring-terminal-green transition-colors"
               />
             </div>
+
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm text-slate-400 mb-1.5 font-mono"
-              >
+              <label htmlFor="contact-email" className="block text-sm text-slate-400 mb-1.5 font-mono">
                 Email
               </label>
               <input
-                id="email"
+                id="contact-email"
                 name="email"
                 type="email"
                 required
@@ -106,15 +106,13 @@ export function Contact() {
                 className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-lg text-slate-200 placeholder-slate-600 focus:outline-none focus:border-terminal-green focus:ring-1 focus:ring-terminal-green transition-colors"
               />
             </div>
+
             <div>
-              <label
-                htmlFor="message"
-                className="block text-sm text-slate-400 mb-1.5 font-mono"
-              >
+              <label htmlFor="contact-message" className="block text-sm text-slate-400 mb-1.5 font-mono">
                 Message
               </label>
               <textarea
-                id="message"
+                id="contact-message"
                 name="message"
                 required
                 rows={5}
@@ -123,20 +121,12 @@ export function Contact() {
               />
             </div>
 
-            {status === 'error' && (
-              <div role="alert" className="flex items-center gap-2 text-red-400 text-sm">
-                <AlertCircle size={15} />
-                Something went wrong. Please try emailing me directly.
-              </div>
-            )}
-
             <button
               type="submit"
-              disabled={status === 'sending'}
-              className="w-full sm:w-auto self-end px-6 py-3 bg-terminal-green text-bg-primary font-semibold rounded-lg hover:bg-terminal-cyan transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
+              className="w-full sm:w-auto self-end px-6 py-3 bg-terminal-green text-bg-primary font-semibold rounded-lg hover:bg-terminal-cyan transition-colors flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
             >
               <Send size={16} />
-              {status === 'sending' ? 'Sending…' : 'Send Message'}
+              Send via Gmail
             </button>
           </form>
         )}

@@ -9,7 +9,7 @@ const navLinks = [
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Blog', href: '#blog' },
+  { label: 'Credentials', href: '#open-source' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -47,7 +47,8 @@ export function Navbar() {
           href="/"
           className="font-mono text-terminal-green font-bold text-lg hover:text-terminal-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
         >
-          {'<AC />'}
+          {'<AA />'}
+
         </Link>
 
         {/* Desktop nav */}

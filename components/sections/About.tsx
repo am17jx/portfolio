@@ -2,9 +2,9 @@ import { personalInfo } from '@/lib/data'
 import { Building2, Sparkles } from 'lucide-react'
 
 const stats = [
-  { label: 'Years Experience', value: personalInfo.yearsExperience },
-  { label: 'Projects Shipped', value: `${personalInfo.projectsShipped}+` },
-  { label: 'GitHub Stars', value: `${(personalInfo.githubStars / 1000).toFixed(1)}k` },
+  { label: 'Years Experience', value: `${personalInfo.yearsExperience}+` },
+  { label: 'Projects Built', value: `${personalInfo.projectsShipped}+` },
+  { label: 'Certificates', value: '10+' },
 ]
 
 export function About() {
@@ -23,15 +23,25 @@ export function About() {
             <p className="text-slate-400 leading-relaxed mb-6">
               {personalInfo.summary}
             </p>
-            <div className="flex items-center gap-2 text-slate-400">
-              <span className="w-2 h-2 rounded-full bg-terminal-green animate-pulse" />
-              <Building2 size={16} className="text-slate-500" />
-              <span>
-                Currently:{' '}
-                <span className="text-slate-200 font-medium">
-                  {personalInfo.currentRole} @ {personalInfo.company}
+            <div className="flex flex-col gap-3 text-slate-400">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-terminal-green animate-pulse" />
+                <Building2 size={16} className="text-slate-500" />
+                <span>
+                  Currently:{' '}
+                  <span className="text-slate-200 font-medium">
+                    {personalInfo.currentRole} @ {personalInfo.company}
+                  </span>
                 </span>
-              </span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-slate-500">📍</span>
+                <span className="text-slate-300">Baghdad, Iraq</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-slate-500">🎓</span>
+                <span className="text-slate-300">ICE Engineer — Al-Nahrain University · Graduating 2026</span>
+              </div>
             </div>
           </div>
 
