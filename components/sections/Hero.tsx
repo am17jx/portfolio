@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { ArrowDown, Download } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { RiGithubFill, RiLinkedinBoxFill, RiTwitterXFill } from 'react-icons/ri'
+import { RiGithubFill, RiLinkedinBoxFill } from 'react-icons/ri'
 import { TerminalDecoration } from '@/components/ui/TerminalDecoration'
 import { personalInfo } from '@/lib/data'
 
@@ -118,15 +118,6 @@ export function Hero() {
                 className="text-slate-500 hover:text-terminal-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
               >
                 <RiLinkedinBoxFill size={22} />
-              </a>
-              <a
-                href={personalInfo.twitterUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Twitter / X profile"
-                className="text-slate-500 hover:text-terminal-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
-              >
-                <RiTwitterXFill size={22} />
               </a>
             </div>
           </motion.div>

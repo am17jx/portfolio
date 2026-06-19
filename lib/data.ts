@@ -7,7 +7,6 @@ export const personalInfo: PersonalInfo = {
   githubUsername: 'am17jx',
   githubUrl: 'https://github.com/am17jx',
   linkedinUrl: 'https://www.linkedin.com/in/ameer-ahmed-4ba9972b1',
-  twitterUrl: 'https://twitter.com/ameerahmed0780',
   resumeUrl: '/portfolio/resume.pdf',
   bio: 'Full-Stack Engineer (Node.js + React) and Information & Communication Engineering graduate, building scalable web applications from Baghdad, Iraq.',
   summary:

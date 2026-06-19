@@ -47,7 +47,6 @@ export interface PersonalInfo {
   githubUsername: string
   githubUrl: string
   linkedinUrl: string
-  twitterUrl: string
   resumeUrl: string
   bio: string
   summary: string

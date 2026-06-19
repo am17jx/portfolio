@@ -1,4 +1,4 @@
-import { RiGithubFill, RiLinkedinBoxFill, RiTwitterXFill } from 'react-icons/ri'
+import { RiGithubFill, RiLinkedinBoxFill } from 'react-icons/ri'
 import { personalInfo } from '@/lib/data'
 
 export function Footer() {
@@ -26,15 +26,6 @@ export function Footer() {
             className="text-slate-500 hover:text-terminal-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
           >
             <RiLinkedinBoxFill size={18} />
-          </a>
-          <a
-            href={personalInfo.twitterUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter profile"
-            className="text-slate-500 hover:text-terminal-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan rounded"
-          >
-            <RiTwitterXFill size={18} />
           </a>
         </div>
       </div>
