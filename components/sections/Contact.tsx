@@ -65,7 +65,7 @@ export function Contact() {
 
         {/* Form */}
         {status === 'success' ? (
-          <div className="flex flex-col items-center gap-3 py-10 border border-terminal-green/30 bg-terminal-green/5 rounded-xl">
+          <div role="status" aria-live="polite" className="flex flex-col items-center gap-3 py-10 border border-terminal-green/30 bg-terminal-green/5 rounded-xl">
             <CheckCircle size={32} className="text-terminal-green" />
             <p className="text-slate-200 font-medium">Message sent!</p>
             <p className="text-slate-400 text-sm">
@@ -73,7 +73,7 @@ export function Contact() {
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
+          <form onSubmit={handleSubmit} aria-busy={status === 'sending'} className="flex flex-col gap-4 text-left">
             <div>
               <label
                 htmlFor="name"
@@ -124,7 +124,7 @@ export function Contact() {
             </div>
 
             {status === 'error' && (
-              <div className="flex items-center gap-2 text-red-400 text-sm">
+              <div role="alert" className="flex items-center gap-2 text-red-400 text-sm">
                 <AlertCircle size={15} />
                 Something went wrong. Please try emailing me directly.
               </div>

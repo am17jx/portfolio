@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ExternalLink, BookOpen, Star } from 'lucide-react'
@@ -11,6 +12,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const [imageError, setImageError] = useState(false)
+
   return (
     <article className="group bg-bg-secondary border border-border-subtle rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-xl hover:shadow-black/50 hover:border-terminal-green/40 transition-all duration-300">
       {/* Image */}
@@ -19,19 +22,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
           src={project.image}
           alt={`${project.title} screenshot`}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover group-hover:scale-105 transition-transform duration-500 relative z-10"
           sizes="(max-width: 768px) 100vw, 50vw"
-          onError={(e) => {
-            // Fallback: hide broken image, show placeholder
-            ;(e.target as HTMLImageElement).style.display = 'none'
-          }}
+          onError={() => setImageError(true)}
         />
-        {/* Placeholder overlay when no image */}
-        <div className="absolute inset-0 flex items-center justify-center bg-bg-secondary">
-          <span className="font-mono text-terminal-green text-2xl opacity-30">
-            {'</>'}
-          </span>
-        </div>
+        {/* Placeholder overlay shown only when image fails to load */}
+        {imageError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-bg-secondary">
+            <span className="font-mono text-terminal-green text-2xl opacity-30">
+              {'</>'}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Content */}
