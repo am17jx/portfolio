@@ -1,12 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  basePath: '/portfolio',
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'ghchart.rshah.org',
-      },
-    ],
+    unoptimized: true,
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
