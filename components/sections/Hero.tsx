@@ -5,6 +5,7 @@ import { ArrowDown, Download } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { RiGithubFill, RiLinkedinBoxFill } from 'react-icons/ri'
 import { TerminalDecoration } from '@/components/ui/TerminalDecoration'
+import { ThreeDGlobe } from '@/components/ui/ThreeDGlobe'
 import { personalInfo } from '@/lib/data'
 
 const roles = ['Full-Stack Developer', 'Node.js Engineer', 'React Developer', 'API Builder']
@@ -122,13 +123,14 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right column: terminal */}
+          {/* Right column: 3D Globe & Terminal */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center"
+            className="flex flex-col items-center justify-center gap-8"
           >
+            <ThreeDGlobe />
             <TerminalDecoration />
           </motion.div>
         </div>
