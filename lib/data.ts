@@ -88,6 +88,28 @@ export const projects: Project[] = [
     results: 'Production-grade secure API with comprehensive authentication, RBAC, and multiple layers of security hardening.',
     screenshots: ['/projects/book-review-api.png'],
   },
+  {
+    slug: 'smart-student-attendance-system',
+    title: 'Smart Student Attendance System',
+    description:
+      'A contactless student attendance system utilizing QR code scanning, real-time logging, and automated notifications to streamline attendance tracking and reduce manual overhead.',
+    outcome: 'Designed and implemented a high-performance attendance tracking system with QR authentication, reducing class check-in times by 80%.',
+    techStack: ['Node.js', 'Express.js', 'PostgreSQL', 'React', 'Tailwind CSS', 'QR Code API'],
+    githubUrl: 'https://github.com/am17jx/Smart_Student_Attendance_System',
+    image: '/projects/smart-student-attendance.png',
+    featured: true,
+    problem:
+      'Traditional manual attendance taking is time-consuming, prone to proxy attendance, and lacks real-time updates for instructors and academic administration.',
+    constraints:
+      'Must be contactless, fast (sub-second scan processing), secure against proxy check-ins (e.g. time-limited QR codes), and support reliable data logging with relational integrity.',
+    architecture: `Student App ─► QR Code Scan ─► Express API (Auth & Validation)
+                                          │
+                                  PostgreSQL Database
+                                          │
+                                 Instructor Dashboard`,
+    results: 'A fully functional contactless attendance management system utilizing dynamic QR codes and real-time logging.',
+    screenshots: ['/projects/smart-student-attendance.png'],
+  },
 ]
 
 export const skills: Skill[] = [
