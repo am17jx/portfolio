@@ -44,3 +44,34 @@ body {
 section {
   scroll-margin-top: 4rem;
 }
+
+/* Music player – volume slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  border: none;
+  background: transparent;
+}
+
+/* Crisp canvas rendering */
+canvas {
+  image-rendering: pixelated;
+}
+
+/* 3D Turntable Utilities */
+.perspective-1200 {
+  perspective: 1200px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+
