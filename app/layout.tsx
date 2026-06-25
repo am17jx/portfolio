@@ -4,6 +4,8 @@ import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
+import { CoffeeFloatingButton } from '@/components/ui/CoffeeFloatingButton'
+import { WelcomeOverlay } from '@/components/ui/WelcomeOverlay'
 import { personalInfo } from '@/lib/data'
 
 const inter = Inter({
@@ -58,6 +60,8 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <CoffeeFloatingButton />
+          <WelcomeOverlay />
         </ThemeProvider>
       </body>
     </html>

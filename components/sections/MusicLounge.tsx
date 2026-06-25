@@ -1,14 +1,14 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Pause, Volume2, VolumeX, Music } from 'lucide-react'
+import { globalAudio } from '@/lib/audioManager'
 
-// Single Cozy Coffee Shop Track config
+// Single Cozy Coffee Shop Track config (Mood deleted as requested)
 const TRACK = {
   title: 'Cozy Coffee Shop Jazz',
   artist: 'Smooth Piano Jazz',
-  mood: '☕ Cozy Lounge',
   bpm: 54,
   key: 'Ab Maj',
   gradient: ['#00ff88', '#004d26']
@@ -21,132 +21,29 @@ export function MusicLounge() {
   const [progress, setProgress] = useState(0)
   const [visData, setVisData] = useState<number[]>(new Array(16).fill(0))
 
-  // Refs for Web Audio API & Audio Element
-  const audioRef = useRef<HTMLAudioElement | null>(null)
-  const ctxRef = useRef<AudioContext | null>(null)
-  const masterRef = useRef<GainNode | null>(null)
-  const analyserRef = useRef<AnalyserNode | null>(null)
-  const sourceRef = useRef<MediaElementAudioSourceNode | null>(null)
-  const animationRef = useRef<number>(0)
-
-  // Initialize audio and connect it to analyser
-  const initAudio = useCallback(() => {
-    if (ctxRef.current) return
-
-    // Create Audio Element
-    const audio = new Audio('/cozy-jazz.mp3')
-    audio.loop = true
-    audio.crossOrigin = 'anonymous'
-    audioRef.current = audio
-
-    // Web Audio Setup
-    const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
-    const ctx = new AudioContextClass()
-    const master = ctx.createGain()
-    const analyser = ctx.createAnalyser()
-    analyser.fftSize = 64
-
-    // Connect Source -> Analyser -> Master -> Destination
-    const source = ctx.createMediaElementSource(audio)
-    source.connect(analyser)
-    analyser.connect(master)
-    master.connect(ctx.destination)
-
-    ctxRef.current = ctx
-    masterRef.current = master
-    analyserRef.current = analyser
-    sourceRef.current = source
-
-    // Sync initial volume
-    master.gain.setValueAtTime(muted ? 0 : volume, ctx.currentTime)
-  }, [volume, muted])
-
-  // Play/Pause Action
-  const togglePlay = useCallback(() => {
-    initAudio()
-    const audio = audioRef.current
-    const ctx = ctxRef.current
-    if (!audio || !ctx) return
-
-    if (isPlaying) {
-      audio.pause()
-      setIsPlaying(false)
-    } else {
-      if (ctx.state === 'suspended') {
-        ctx.resume()
-      }
-      audio.play().catch(() => {})
-      setIsPlaying(true)
-    }
-  }, [isPlaying, initAudio])
-
-  // Sync volume state to gain node
+  // Subscribe to the global audio manager state
   useEffect(() => {
-    if (masterRef.current && ctxRef.current) {
-      masterRef.current.gain.setValueAtTime(muted ? 0 : volume, ctxRef.current.currentTime)
-    }
-  }, [volume, muted])
-
-  // Sync progress bar and visualizer loop
-  useEffect(() => {
-    let active = true
-
-    const updateLoop = () => {
-      if (!active) return
-
-      // Update progress bar
-      const audio = audioRef.current
-      if (audio && audio.duration) {
-        setProgress((audio.currentTime / audio.duration) * 100)
-      }
-
-      // Update Visualizer
-      if (isPlaying && analyserRef.current) {
-        const dataArr = new Uint8Array(analyserRef.current.frequencyBinCount)
-        analyserRef.current.getByteFrequencyData(dataArr)
-        
-        const stepSize = Math.floor(dataArr.length / 16)
-        const newVis = []
-
-        for (let i = 0; i < 16; i++) {
-          let sum = 0
-          for (let j = 0; j < stepSize; j++) {
-            sum += dataArr[i * stepSize + j] || 0
-          }
-          const avg = sum / stepSize
-          newVis.push(avg)
-        }
-        setVisData(newVis)
-
-      } else {
-        // Idle animation
-        const time = Date.now() / 200
-        setVisData(new Array(16).fill(0).map((_, i) => Math.abs(Math.sin(time + i * 0.4)) * 12))
-      }
-
-      animationRef.current = requestAnimationFrame(updateLoop)
-    }
-
-    updateLoop()
-    return () => {
-      active = false
-      cancelAnimationFrame(animationRef.current)
-    }
-  }, [isPlaying])
-
-  // Clean up audio on unmount
-  useEffect(() => {
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause()
-        audioRef.current = null
-      }
-      if (ctxRef.current) {
-        ctxRef.current.close()
-        ctxRef.current = null
-      }
-    }
+    const unsubscribe = globalAudio.subscribe((state) => {
+      setIsPlaying(state.isPlaying)
+      setVolume(state.volume)
+      setMuted(state.muted)
+      setProgress(state.progress)
+      setVisData(state.visData)
+    })
+    return unsubscribe
   }, [])
+
+  const togglePlay = () => {
+    globalAudio.togglePlay()
+  }
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    globalAudio.setVolume(parseFloat(e.target.value))
+  }
+
+  const toggleMute = () => {
+    globalAudio.toggleMute()
+  }
 
   const [c1, c2] = TRACK.gradient
 
@@ -225,6 +122,7 @@ export function MusicLounge() {
                   </motion.div>
                 </div>
 
+                {/* 3D Tonearm */}
                 <motion.div
                   animate={{
                     rotate: isPlaying ? -24 : 0,
@@ -297,9 +195,6 @@ export function MusicLounge() {
                   <h3 className="text-xl font-bold text-slate-100">{TRACK.title}</h3>
                   <p className="text-slate-400 text-sm mt-0.5">{TRACK.artist}</p>
                 </div>
-                <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: `${c1}22`, border: `1px solid ${c1}44`, color: c1 }}>
-                  {TRACK.mood}
-                </span>
               </div>
 
               {/* Progress Slider */}
@@ -325,7 +220,7 @@ export function MusicLounge() {
 
               {/* Volume Controller */}
               <div className="flex items-center gap-3 pt-2">
-                <button onClick={() => setMuted(m => !m)} className="text-slate-500 hover:text-slate-300 transition-colors" aria-label={muted ? 'Unmute' : 'Mute'}>
+                <button onClick={toggleMute} className="text-slate-500 hover:text-slate-300 transition-colors" aria-label={muted ? 'Unmute' : 'Mute'}>
                   {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                 </button>
                 <div className="flex-1 relative h-1.5">
@@ -334,7 +229,7 @@ export function MusicLounge() {
                   <input
                     type="range" min="0" max="1" step="0.01"
                     value={muted ? 0 : volume}
-                    onChange={e => { setVolume(parseFloat(e.target.value)); setMuted(false) }}
+                    onChange={handleVolumeChange}
                     className="absolute inset-0 w-full opacity-0 cursor-pointer h-full"
                     aria-label="Volume slider"
                   />
